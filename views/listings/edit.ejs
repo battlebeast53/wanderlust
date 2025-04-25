@@ -1,0 +1,65 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row">
+    <div class="col-8 offset-2">
+        <br><br> 
+        <h2>You are Editing Listing named : <%= place.title%></h2>
+        <form method="POST" action="/listings/<%= place._id %>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+            
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input name="listing[title]" type="text" placeholder="Enter new title" class="form-control"  value="<%= place.title %>"required>
+                <div class="invalid-feedback">
+                    Enter valid title
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]" type="text" placeholder="Enter new description"
+                    class="form-control" required><%= place.description %></textarea>
+                <div class="invalid-feedback">
+                    Please enter a short description
+                </div>
+            </div>
+
+            <div class="mb-3">
+                Original Listing Image :<br>
+                <img src="<%= originalImageUrl %>">
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload New Image</label>
+                <input name="listing[image]" type="file" class="form-control">
+            </div>
+    
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input name="listing[price]" type="number" placeholder="Enter new price" class="form-control"  value="<%= place.price %>"required>
+                <div class="invalid-feedback">
+                    Enter valid price
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" type="text" placeholder="Enter new country" class="form-control" value="<%= place.country %>" required>
+                    <div class="invalid-feedback">
+                        Enter valid country
+                    </div>
+                </div>
+                
+                <div class="mb-3 col-md-8">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" type="text" placeholder="Enter new location" class="form-control" value="<%= place.location %>" required>
+                    <div class="invalid-feedback">
+                        Enter valid location
+                    </div>
+                </div>
+            </div>
+    
+            <button class="btn btn-dark add-btn mt-3">Edit</button>
+        </form>
+    </div>
+    
+</div>
